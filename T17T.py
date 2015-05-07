@@ -4,7 +4,7 @@ import os
 import glob
 import greedy
 
-def main(argv):
+def main(argv): #hi
   if len(argv) != 1:
     print "Usage: python validator.py [path_to_input_file]"
     return
