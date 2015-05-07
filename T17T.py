@@ -5,21 +5,22 @@ import os
 import glob
 import greedy
 
-def main(argv): #OLOLOLOL
+def main(argv):
   if len(argv) != 1:
     print "Usage: python validator.py [path_to_input_file]"
     return
   path = argv[0]
   output = {}
-  for filename in glob.glob(os.path.join(path, '*.in')):
-    if path == 'instances':
+  if path == 'instances':
+    for filename in glob.glob(os.path.join(path, '*.in')):
       yolo = re.search("\d", filename)
       output[int(filename[yolo.start():len(filename)-3])] = T17T(filename)
 
-      for i in range(1,len(output.keys())+1):
-        print output[i]
+    for i in range(1,len(output.keys())+1):
+      print output[i]
 
-    else:
+  else:
+    for filename in glob.glob(os.path.join(path, '*.in')):
       print T17T(filename)
 
 def T17T(argv):
@@ -44,10 +45,13 @@ def T17T(argv):
 
 def output(array):
   rbout = ""
-  for i in range(0, len(array)):
-    rbout = rbout + " " + str(array[i]+1)
-  #print rb
-  return rbout.strip()
+  if isinstance(array, list):
+    for i in range(0, len(array)):
+      rbout = rbout + " " + str(array[i]+1)
+    #print rb
+    return rbout.strip()
+  else:
+    return "U GG'd"
 
 def processFile(s):
   fin = open(s, "r")
