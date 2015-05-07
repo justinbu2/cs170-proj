@@ -1,17 +1,26 @@
 import sys
+import re
 from itertools import permutations
 import os
 import glob
 import greedy
 
-def main(argv): #hi
+def main(argv): #OLOLOLOL
   if len(argv) != 1:
     print "Usage: python validator.py [path_to_input_file]"
     return
   path = argv[0]
-
+  output = {}
   for filename in glob.glob(os.path.join(path, '*.in')):
-    T17T(filename)
+    if path == 'instances':
+      yolo = re.search("\d", filename)
+      output[int(filename[yolo.start():len(filename)-3])] = T17T(filename)
+
+      for i in range(1,len(output.keys())+1):
+        print output[i]
+
+    else:
+      print T17T(filename)
 
 def T17T(argv):
   x = processFile(argv)
@@ -31,8 +40,7 @@ def T17T(argv):
     currRoute = routes[i]
     if minRoute[0] > currRoute[0]:
       minRoute = currRoute
-
-  print output(minRoute[1])
+  return output(minRoute[1])
 
 def output(array):
   rbout = ""
