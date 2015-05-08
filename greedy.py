@@ -155,4 +155,3 @@ def smallestNext2(currCity, currColor, count, rCount, bCount, ucityList, adjMatr
         minNext[0][0] = ucityList[i]
         minNext[1] = colorArray[ucityList[i]]
   return minNext
-
