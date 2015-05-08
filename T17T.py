@@ -36,11 +36,13 @@ def T17T(argv):
   #print output(T17Tgreedy(cityNum, adjMatrix, colorArray)[1])
   routes = []
   routes.append(greedy.T17Tgreedy(cityNum, adjMatrix, colorArray))
+  routes.append(greedy.T17Tgreedy2(cityNum, adjMatrix, colorArray))
   minRoute = [sys.maxint,0]
   for i in range(0, len(routes)):
     currRoute = routes[i]
     if minRoute[0] > currRoute[0]:
       minRoute = currRoute
+  print minRoute
   return output(minRoute[1])
 
 def output(array):
