@@ -42,7 +42,7 @@ def T17T(argv):
     currRoute = routes[i]
     if minRoute[0] > currRoute[0]:
       minRoute = currRoute
-  print minRoute
+  #print minRoute
   return output(minRoute[1])
 
 def output(array):
